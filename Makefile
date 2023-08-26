@@ -8,8 +8,19 @@
 # LOCAL_TAG:=$(shell date +"%Y-%m-%d-%H-%M")
 # LOCAL_IMAGE_NAME=stream-model-duration:${LOCAL_TAG}
 
-all:
+all: data
 	echo all
+
+data:
+	wget \
+	-c https://raw.githubusercontent.com/alexeygrigorev/mlbookcamp-code/master/chapter-02-car-price/data.csv \
+	-O notebooks/2022-hw/data/car-price-data.csv
+	wget \
+	-c https://raw.githubusercontent.com/alexeygrigorev/datasets/master/housing.csv \
+	-O notebooks/2022-hw/data/housing.csv
+	wget \
+	-c https://raw.githubusercontent.com/alexeygrigorev/datasets/master/AER_credit_card_data.csv \
+	-O notebooks/2022-hw/data/AER_credit_card_data.csv
 
 test:
 	pytest src/tests/
