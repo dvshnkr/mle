@@ -1,11 +1,12 @@
 # mle
 Machine Learning Experiments
+<br>
 
 ## Introduction
 
 Welcome to the repo!
 Here, I follow along with DataTalksClub's [Machine Learning Zoomcamp](https://github.com/DataTalksClub/machine-learning-zoomcamp).
-<br>
+<br><br>
 
 ## Overview of Concepts and Tools covered (WIP)
 
@@ -30,3 +31,8 @@ Here, I follow along with DataTalksClub's [Machine Learning Zoomcamp](https://gi
 
 ## Reproducibility
 This project uses python 3.10, and the `requirements.txt` file with all package requirements for this project is available in the repo.
+The data used in the project can be downloaded by using the Makefile in the repo, by running:
+```bash
+make data
+```
+Feel free to open an issue if you have questions.
