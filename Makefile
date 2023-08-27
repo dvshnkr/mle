@@ -28,7 +28,7 @@ data:
 	-O notebooks/2022-hw/data/AER_credit_card_data.csv
 
 test: quality_checks
-	pytest src/tests/
+	pytest
 
 build: test
 	echo build
@@ -40,3 +40,7 @@ quality_checks:
 	isort src/
 	black src/
 	pylint --recursive=y src/
+
+staging: test
+	git add -u
+	git status
