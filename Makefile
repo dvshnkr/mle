@@ -11,6 +11,11 @@
 all: data
 	echo all
 
+dotenv:
+# 	creates an environment file by appending nothing to a non-existant file
+#	functionally similar to how touch .env can be used in unix
+	type nul >> ".env"
+
 data:
 	wget \
 	-c https://raw.githubusercontent.com/alexeygrigorev/mlbookcamp-code/master/chapter-02-car-price/data.csv \
@@ -22,7 +27,7 @@ data:
 	-c https://raw.githubusercontent.com/alexeygrigorev/datasets/master/AER_credit_card_data.csv \
 	-O notebooks/2022-hw/data/AER_credit_card_data.csv
 
-test:
+test: quality_checks
 	pytest src/tests/
 
 build: test

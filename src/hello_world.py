@@ -1,4 +1,8 @@
 import numpy as np
+from dotenv import dotenv_values
+
+config = dotenv_values(".env")
+print(f"{config}")
 
 var1 = {"foo": "bar"}
 
