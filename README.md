@@ -25,6 +25,8 @@ Here, I follow along with DataTalksClub's [Machine Learning Zoomcamp](https://gi
 ├───notebooks
 │   └───2022-hw
 └───src
+    ├───2022-hw
+    │   └───05-deployment
     └───tests
 ```
 <br>
