@@ -8,7 +8,11 @@
 # LOCAL_TAG:=$(shell date +"%Y-%m-%d-%H-%M")
 # LOCAL_IMAGE_NAME=stream-model-duration:${LOCAL_TAG}
 
-all: data
+FOO=BAR
+PREFIX=https://raw.githubusercontent.com/alexeygrigorev/mlbookcamp-code/master/course-zoomcamp/cohorts/2022/05-deployment/homework
+
+all:
+	echo ${FOO}
 	echo all
 
 dotenv:
@@ -26,6 +30,12 @@ data:
 	wget \
 	-c https://raw.githubusercontent.com/alexeygrigorev/datasets/master/AER_credit_card_data.csv \
 	-O notebooks/2022-hw/data/AER_credit_card_data.csv
+	wget \
+	-c ${PREFIX}/model1.bin \
+	-O src/2022-hw/05-deployment/model1.bin
+	wget \
+	-c ${PREFIX}/dv.bin \
+	-O src/2022-hw/05-deployment/dv.bin
 
 test: quality_checks
 	pytest
