@@ -1,5 +1,5 @@
 # mle
-Machine Learning Experiments
+Machine Learning Experiments / Machine Learning Education
 <br>
 
 ## Introduction
