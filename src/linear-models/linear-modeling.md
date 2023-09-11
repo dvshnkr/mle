@@ -8,7 +8,7 @@ For an example of the linear regression model, consider this model which uses [A
 
 ![TV Advertising vs Sales Linear Regression](res\TV-Sales-simple-linreg-saved.png "TV Advertising vs Sales Linear Regression")
 
-Once the Advertising data is loaded into the `data` variable, the modeling can done using a few simple lines of code using the LinearRegression class from scikit-learn:
+Once the Advertising data is loaded into the `data` variable, the modeling can done using a few simple lines of code using the `LinearRegression` class from scikit-learn:
 
 ```python
 features = ['TV']; target = 'Sales'
@@ -19,7 +19,7 @@ model = LinearRegression().fit(X, y)
 
 This model allows us to estimate how the dependent variable (Sales) changes as the independent variable (TV advertising) changes. Behind the hood, scikit-learn uses matrix multiplication to estimate the model parameters.
 
-This **simple linear regression** model we just trained has a co-efficient of 0.055 and an intercept of 6.97.
+This **simple linear regression** model we just trained has a co-efficient of 0.055 and an intercept of 6.97.<br>
 Since the intercept is 6.97, spending no money on TV advertising would still result in 6.97 units of the product sold. The co-efficient being positive means that spending on TV advertising increases the sales, and the marginal increase in sales of TV advertising by $1 is an additional 0.055 unit of product. **The interpretation of linear models being so straightforward is one of their biggest advantages.**
 
 We can easily extend linear models to work with multiple predictor variables although plotting the straight line would be harder.
@@ -40,7 +40,7 @@ Interpreting a multiple linear regression is slightly trickier than a simple lin
 
 For instance, the co-efficient of 0.05 for TV spending means that increasing spending on TV advertising by $1 would increase sales by 0.05 units *given that* spending on Radio and Newspaper advertising is not impacted. The **assumption that the predictors are not correlated** is important to keep in mind, and is often not the case in the real world. For example, there might be an overall advertising budget which dictates spending on different channels.
 
-This is a nice segue into the next section, where we will discuss the `Lasso` model which can help identify the most important predictors from our data.
+This is a nice segue into the next section, where we will discuss the `Lasso` model which can help identify the most important (uncorrelated) predictors from our data.
 
 ### Regularisation
 
@@ -50,7 +50,7 @@ In contrast, **a model with high variance overfits the data** it trains on, and 
 
 The issue is that low bias models have high variance, and low variance models have high bias. Hence the need for optimisation.
 
-Regularisation attemts to reduce the variance of a model by simplifying it.
+Regularisation attemts to reduce the variance of a model by simplifying it.<br>
 A particular model called the **Lasso** regularises the linear regression model by shrinking the regression coefficients towards zero. It does this by introducing a regularisation term (the L1 norm) in the model's objective so that the model does not merely try to fit the data in the best possible way, but does so with the constraint that the model co-efficients cannot be huge.
 
 Lasso also has the added advantage that it tends to assign co-efficients of exactly zero to the predictors which reduces the number of predictors in the model. As Kevin from the TV show "The Office" put it, "Why waste time with lot predictor when few predictor do trick?"
@@ -70,10 +70,10 @@ model = Lasso(alpha=1).fit(X, y)
 
 With the Advertising data, this results in a model with an intercept of 4.75 and co-efficients 0.05, 0.10, and 0 for the three variables TV, Radio, and Newspaper respectively. Lasso has effectively produced a model with just two predictors instead of the three we started with, by shrinking the co-efficient of Newspaper spending to 0.
 
-However, there is one crucial step we missed while training our Lasso model.
+However, there is one crucial step we missed while training our Lasso model.<br>
 We have not scaled our predictors. When we trained the simple linear regression model, the model accounted for predictors on different scales by adjusting co-efficients as required. However, in the Lasso model, we are artificially posing a restriction on model co-efficients. As such, **it becomes crucial that our predictors are on the same scale**.
 
-To scale our features, we'll use the Standard Scaler from scikit-learn.
+To scale our features, we'll use the `StandardScaler` from scikit-learn.<br>
 From the scikit-learn docs, what the Standard Scaler does is:
 
 Standardize features by removing the mean and scaling to unit variance.
@@ -105,7 +105,7 @@ RMSE considers the squared error for each prediction as the loss for that predic
 
 At this point, it is worth mentioning that one of the assumptions of linear regression is that errors are not dependent on the predictor variable. That is to say the errors do not vary with X, and the errors have a common variance. This assumption is known as **homoscedasticity of the target variable**.
 
-In scikit-learn, the mean_squared_error function helps us compute this.
+In scikit-learn, the `mean_squared_error` function helps us compute this.
 Once the model has been trained, we make predictions and then compute the RMSE.
 
 ```python
@@ -118,15 +118,15 @@ rmse = mean_squared_error(y, y_pred, squared=False)
 
 Note that, here, we are making predictions on the same data that was used to train the model. In general, this is a bad idea, since our objective is to train a model which performs well on data that it has not been trained on.
 
-That said, the Lasso model we previously trained has an RMSE of 2.15.
-This means that, on average, our model's predictions are off target by 2.15 units, when making predicitons on the same data it was trained on.
+That said, the Lasso model we previously trained has an RMSE of 2.15.<br>
+This means that, on average, our model's predictions are off target by 2.15 units, when making predicitons on the same data it was trained on.<br>
 Almost certainly, the model's performance would be worse on data it has not been trained on, although we did reduce its variance to some extent by regularising it.
 
 Armed with this metric, it is time to go beyond linear predictors.
 
 ### Beyond Linear Predictors
 
-Extending scikit-learn's functionality to train polynomial regression models is surprisingly simple. In fact, it is exactly like training the linear regression model with polynomial features created from the raw data in a pre-processing step.
+Extending scikit-learn's functionality to train polynomial regression models is surprisingly simple. In fact, it is exactly like training the linear regression model with polynomial features created from the original variables in a pre-processing step.
 
 ![Meme: Scooby Doo Investigates Polynomial Regression](res\scooby-doo-mask-reveal.png "Scooby Doo Investigates Polynomial Regression")
 
@@ -145,14 +145,15 @@ model = LinearRegression(fit_intercept=False).fit(X, y)
 
 The PolynomialFeatures class from scikit-learn helps create higher-order variables from our initial predictors by creating polynomial combinations of all predictors with degree less than or equal to the specified degree, which in this case is 2.
 
-That is to say, if we start with 3 variables ( $a, b, c$ ), the PolynomialFeatures instance with a specified degree of 2 returns a feature matrix with the following variables when we use the `.fit_transform()` method:
+That is to say, if we start with 3 variables ( $a, b, c$ ), the PolynomialFeatures instance with a specified degree of 2 returns a feature matrix with the following variables when we use the `.fit_transform()` method:<br>
 [ $1, a, b, c, a^2, b^2, c^2, ab, bc, ca$ ]
 
-You'll notice that one of the variables createed by PolynomialFeatures is the scalar 1.
-This variable now serves the same purpose as the intercept in the model, since it is a scalar and is independent of our original predictors. As a result, when we instantiate a LinearRegression model now, we set `fit_intercept=False` since we do not need an intercept in the model.
+You'll notice that one of the variables createed by PolynomialFeatures is the scalar 1.<br>
+This variable now serves the same purpose as the intercept in the model, since it is a scalar and is independent of our original predictors. As a result, when we instantiate a LinearRegression model now, we set `fit_intercept=False` since we do not need an intercept in the model.<br>
 Indeed, if we do not set this parameter to False, scikit-learn will "learn" the co-efficient of the scalar variable to be 0.
 
 This model has an RMSE of 1.34, which means that we might have improved on the Lasso model we trained in a previous section by introducing higher order variables and interaction terms.
+
 On the contrary, this might also mean that what we have managed to do is overfit the data by increasing the complexity of the model, and we have managed to make the model worse.
 
 Our objective with the model should not be to fit the training data, but to **approximate the true relationship between the predictors and the target variable**. Sometimes, this would mean using a linear regression model, and at other times, this would mean using a polynomial regression model.
@@ -165,6 +166,6 @@ For example, it is possible to imagine a situation where a scatter plot between 
 
 If we do fit a linear model on this data as we have done, that would produce an intercept and a slope of "best fit" but this does a very poor job of approximating the true relationship between the predictor and the target.
 
-Now that we have the basics of regression covered, let's move to classification.
+With that, we have the basics of regression covered, and it's time to move on to classification.
 
 ## Classification
