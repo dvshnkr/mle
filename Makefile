@@ -30,6 +30,9 @@ data:
 	https://github.com/alexeygrigorev/dino-or-dragon/releases/download/data/dino-dragon.zip \
 	-O notebooks/2022-hw/data/dino-dragon.zip
 	unzip -d notebooks/2022-hw/data/dino-dragon notebooks/2022-hw/data/dino-dragon.zip
+	kaggle datasets download \
+	thorgodofthunder/tvradionewspaperadvertising -f Advertising.csv \
+	-p src/linear-models/data/
 
 test: quality_checks
 	pytest
