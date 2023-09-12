@@ -6,7 +6,7 @@ Linear models fit the data by identifying a straight line which best captures th
 
 For an example of the linear regression model, consider this model which uses [Advertising data]( https://www.kaggle.com/datasets/thorgodofthunder/tvradionewspaperadvertising) from Kaggle.
 
-![TV Advertising vs Sales Linear Regression](res\TV-Sales-simple-linreg-saved.png "TV Advertising vs Sales Linear Regression")
+![TV Advertising vs Sales Linear Regression](res/TV-Sales-simple-linreg-saved.png "TV Advertising vs Sales Linear Regression")
 
 Once the Advertising data is loaded into the `data` variable, the modeling can done using a few simple lines of code using the `LinearRegression` class from scikit-learn:
 
@@ -55,7 +55,7 @@ A particular model called the **Lasso** regularises the linear regression model 
 
 Lasso also has the added advantage that it tends to assign co-efficients of exactly zero to the predictors which reduces the number of predictors in the model. As Kevin from the TV show "The Office" put it, "Why waste time with lot predictor when few predictor do trick?"
 
-![Meme: Actual quote by Kevin from The Office](res\554a4baf874f00687670db8eeda204fc.jpg "Actual quote by Kevin from The Office")
+![Meme: Actual quote by Kevin from The Office](res/554a4baf874f00687670db8eeda204fc.jpg "Actual quote by Kevin from The Office")
 
 A geometrical interpretation of the Lasso helps us understand why it tends to shrink model co-efficients exactly to zero. In [this YouTube video](https://youtu.be/0tfPuddPhEY), Robert Tibshirani, professor at Stanford and the person who developed Lasso regularisation explains exactly this.
 
@@ -128,7 +128,7 @@ Armed with this metric, it is time to go beyond linear predictors.
 
 Extending scikit-learn's functionality to train polynomial regression models is surprisingly simple. In fact, it is exactly like training the linear regression model with polynomial features created from the original variables in a pre-processing step.
 
-![Meme: Scooby Doo Investigates Polynomial Regression](res\scooby-doo-mask-reveal.png "Scooby Doo Investigates Polynomial Regression")
+![Meme: Scooby Doo Investigates Polynomial Regression](res/scooby-doo-mask-reveal.png "Scooby Doo Investigates Polynomial Regression")
 
 In code, this looks like
 
@@ -162,7 +162,7 @@ In some cases, when the predictor variable that we have collected does not corre
 
 For example, it is possible to imagine a situation where a scatter plot between a feature and target looks something like this:
 
-![Simple Linear Regression with Dummy data](res\simple-linear-regression-dummy-data-saved.png "Simple Linear Regression with Dummy data")
+![Simple Linear Regression with Dummy data](res/simple-linear-regression-dummy-data-saved.png "Simple Linear Regression with Dummy data")
 
 If we do fit a linear model on this data as we have done, that would produce an intercept and a slope of "best fit" but this does a very poor job of approximating the true relationship between the predictor and the target.
 
