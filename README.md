@@ -23,10 +23,15 @@ Here, I follow along with DataTalksClub's [Machine Learning Zoomcamp](https://gi
 
 ```bash
 ├───notebooks
-│   └───2022-hw
+│   ├───2022-hw
+│   └───2023-hw
 └───src
     ├───2022-hw
     │   └───05-deployment
+    ├───linear-models
+    │   ├───archive
+    │   ├───data
+    │   └───res
     └───tests
 ```
 <br>
@@ -35,6 +40,6 @@ Here, I follow along with DataTalksClub's [Machine Learning Zoomcamp](https://gi
 This project uses python 3.10, and the `requirements.txt` file with all package requirements for this project is available in the repo.
 The data used in the project can be downloaded by using the Makefile in the repo, by running:
 ```bash
-make data
+make data --always-make
 ```
 Feel free to open an issue if you have questions.
