@@ -200,7 +200,7 @@ A box plot shows a lot of information, so let's try to break this plot down.
 From the seaborn documentation:<br>
 >A box plot (or box-and-whisker plot) shows the distribution of quantitative data in a way that facilitates comparisons between variables or across levels of a categorical variable. The box shows the quartiles of the dataset while the whiskers extend to show the rest of the distribution, except for points that are determined to be “outliers” using a method that is a function of the inter-quartile range.
 
-In our box plot shown above, we are comparing the distribution of the `proline` feature across the 3 classes of wine, labelled 0, 1, and 2 respectively. The three coloured *boxes* in the box plot show the lower and upper bounds of the **inter-quartile range** (IQR) which is the middle 50% of the data. The lower bound represents the 25 $^{th}$ percentile, whereas the upper bound represents the 75 $^{th}$ percentile of the data. The black horizontal line shows the median, or the 50 $^{th}$ percentile.
+In our box plot shown above, we are comparing the distribution of the `proline` feature across the 3 classes of wine, labelled 0, 1, and 2 respectively. The three coloured *boxes* in the box plot show the lower and upper bounds of the **inter-quartile range** (IQR) which is the middle 50% of the data. The lower bound represents the 25 $^{th}$ percentile, whereas the upper bound represents the 75 $^{th}$ percentile of the data. The black horizontal line inside the box shows the median, or the 50 $^{th}$ percentile.
 
 The vertical lines which extend from the boxes end with whiskers which denote (in the absence of outliers) the minimum and maximum values in the data. If there are outliers, the vertical line extends till 1.5 times the IQR, and any outliers are shown individually. In the plot above, the distribution of `proline` for wines of `class 1` has one outlier (at a value of around 1000), and is shown separately as a black dot (or diamond).
 
@@ -288,7 +288,7 @@ With that, we've come to the end of Classification.
 Here are a few more aspects of training machine learning models to think about:
 1. While we discussed some of the assumptions of linear models, what other assumptions did we implicitly make in our analysis?
 2. When we discussed the Lasso model, we noted that Lasso uses the L1 norm as the regularisation term. What are possible alternatives?<br>
-_Hint_: check out the `Ridge` class from scikit-learn
+_Hint_: check out the `Ridge` and `ElasticNet` classes from scikit-learn
 3. What could be the potential drawbacks of using accuracy as a metric in classification tasks?<br>
 _Hint_: two common alternatives to accuracy are **precision** and **recall**
 4. What can be done to ensure reproducibility of machine learning code?<br>
