@@ -267,21 +267,21 @@ Just like Marty McFly in Back to the Future, the model has little trouble predic
 **K-Fold CV** is a cross-validation technique where the data is split into K folds, using which the model is trained on K-1 folds and evaluated on the remaining 1 (stand-out) fold.<br>
 This process is repeated for the model to be evaluated on all the K folds (where each time the model is trained on the other K-1 folds) and the average of all the model scores is considered a measure of the model's performance.
 
-To implement CV along with Logistic regression, scikit-learn provides the `LogisticRegressionCV` class. It can be implemented as follows:
+To get the CV scores for our Logistic regression model, scikit-learn provides the `cross_val_score` function. It can be implemented as follows:
 
 ```python
-logistic = LogisticRegressionCV(cv=10)
-logistic.fit(X, y)
+logistic = LogisticRegression(C=0.1)
+scores = cross_val_score(logistic, X, y, cv=5, scoring='accuracy')
 
-acc = logistic.score(X, y)
+acc = np.mean(scores)
 ```
 
-By default, LogisticRegressionCV uses the accuracy score, although it is possible to change that.
+Here, we're using 5 folds for cross-validation, and we're using accuracy as the metric to score the model.
 
-Using cross-validation, our model still has an accuracy score of 0.99!<br>
+Using cross-validation, our model has an accuracy score of 0.98!<br>
 Now, we can be confident that the model will perform well on data it has not been trained on.
 
-With that, we've come to the end of Classification as well.
+With that, we've come to the end of Classification.
 
 ## Parting Thoughts
 

@@ -1,11 +1,13 @@
 from typing import List
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import seaborn as sns
 from sklearn.datasets import load_wine
-from sklearn.linear_model import LogisticRegression, LogisticRegressionCV
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import cross_val_score
 from sklearn.preprocessing import StandardScaler
 
 
@@ -64,10 +66,10 @@ def train_logistic_cv(
     Returns accuracy score.
     """
 
-    logistic = LogisticRegressionCV(cv=cv)
-    logistic.fit(X, y)
+    logistic = LogisticRegression(C=0.1)
+    scores = cross_val_score(logistic, X, y, cv=cv, scoring="accuracy")
 
-    acc = logistic.score(X, y)
+    acc = np.mean(scores)
 
     return acc
 
@@ -90,7 +92,7 @@ def main():
     # acc = train_logistic(X, y, C=0.1)
 
     ### Modeling with CV ###
-    acc = train_logistic_cv(X, y, cv=10)
+    acc = train_logistic_cv(X, y, cv=5)
     print(f"Accuracy score: {acc}")
 
 
