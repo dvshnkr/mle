@@ -286,13 +286,13 @@ With that, we've come to the end of Classification.
 ## Parting Thoughts
 
 Here are a few more aspects of training machine learning models to think about:
-1. What can be done to ensure reproducibility of machine learning code?<br>
-_Hint_: check out the `random_state` argument, which should be available in most scikit-learn classes that are not deterministic
-2. What could be the potential drawbacks of using accuracy as a metric in classification tasks?<br>
-_Hint_: two common alternatives to accuracy are **precision** and **recall**
-3. While we discussed some of the assumptions of linear models, what other assumptions did we implicitly make in our analysis?
-4. When we discussed the Lasso model, we noted that Lasso uses the L1 norm as the regularisation term. What are possible alternatives?<br>
+1. While we discussed some of the assumptions of linear models, what other assumptions did we implicitly make in our analysis?
+2. When we discussed the Lasso model, we noted that Lasso uses the L1 norm as the regularisation term. What are possible alternatives?<br>
 _Hint_: check out the `Ridge` class from scikit-learn
+3. What could be the potential drawbacks of using accuracy as a metric in classification tasks?<br>
+_Hint_: two common alternatives to accuracy are **precision** and **recall**
+4. What can be done to ensure reproducibility of machine learning code?<br>
+_Hint_: check out the `random_state` argument, which should be available in most scikit-learn classes that are not deterministic
 
 ## Source Code
 
