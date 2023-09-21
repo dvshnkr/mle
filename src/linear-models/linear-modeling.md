@@ -52,7 +52,7 @@ In contrast, **a model with high variance overfits the data** it trains on, and 
 
 The issue is that low bias models have high variance, and low variance models have high bias. Hence the need for optimisation.
 
-Regularisation attemts to reduce the variance of a model by simplifying it.<br>
+Regularisation attempts to reduce the variance of a model by simplifying it.<br>
 A particular model called the **Lasso** regularises the linear regression model by shrinking the regression coefficients towards zero. It does this by introducing a regularisation term (the L1 norm) in the model's objective so that the model does not merely try to fit the data in the best possible way, but does so with the constraint that the model co-efficients cannot be huge.
 
 Lasso also has the added advantage that it tends to assign co-efficients of exactly zero to the predictors which reduces the number of predictors in the model. As Kevin from the TV show "The Office" put it, "Why waste time with lot predictor when few predictor do trick?"
@@ -121,7 +121,7 @@ rmse = mean_squared_error(y, y_pred, squared=False)
 Note that, here, we are making predictions on the same data that was used to train the model. In general, this is a bad idea, since our objective is to train a model which performs well on data that it has not been trained on. Later, we will take a look at cross-validation, which can help us make predictions on data that the model was not trained on.
 
 That said, the Lasso model we previously trained has an RMSE of 2.15.<br>
-This means that, on average, our model's predictions are off target by 2.15 units, when making predicitons on the same data it was trained on.<br>
+This means that, on average, our model's predictions are off target by 2.15 units, when making predictions on the same data it was trained on.<br>
 Almost certainly, the model's performance would be worse on data it has not been trained on, although we did reduce its variance to some extent by regularising it.
 
 Armed with this metric, it is time to go beyond linear predictors.
@@ -150,7 +150,7 @@ The `PolynomialFeatures` class from scikit-learn helps create higher-order varia
 That is to say, if we start with 3 variables ( $a, b, c$ ), the PolynomialFeatures instance with a specified degree of 2 returns a feature matrix with the following variables when we use the `.fit_transform()` method:<br>
 [ $1, a, b, c, a^2, b^2, c^2, ab, bc, ca$ ]
 
-You'll notice that one of the variables createed by PolynomialFeatures is the scalar 1.<br>
+You'll notice that one of the variables created by PolynomialFeatures is the scalar 1.<br>
 This variable now serves the same purpose as the intercept in the model, since it is a scalar and is independent of our original predictors. As a result, when we instantiate a LinearRegression model now, we set `fit_intercept=False` since we do not need an intercept in the model.<br>
 Indeed, if we do not set this parameter to False, scikit-learn will "learn" the co-efficient of the scalar variable to be 0.
 
@@ -231,7 +231,7 @@ y_pred = logistic.predict(X)
 The argument `C` controls regularisation. A lower value of C implies more regularisation.
 
 In the case of regression, we evaluated the model performance using the RMSE metric.<br>
-However, we cannot use the RMSE for clasification tasks, since the "distance" between the different classes of wine is not so apparent.
+However, we cannot use the RMSE for classification tasks, since the "distance" between the different classes of wine is not so apparent.
 
 Instead, we can calculate the **accuracy** of the model to evaluate its performance.
 
@@ -260,7 +260,7 @@ Let's understand the motivation for cross-validation.<br>
 When we are measuring a model's performance by making predictions on the same observations that it was trained on, we are merely evaluating how good it is at _remembering_, not how well it has _learnt_ the data.
 
 Here's how I imagine a conversation between a model and a data scientist when the model is making predictions on the training data:
-![Meme: Hey, I've seen this one!](res/py1ubc4l4ut31.png "Meme: Hey, I've seen this one!")
+![Meme: Hey, I've seen this one!](res/py1ubc4l4ut31.png "Marty McFly has already seen the training data")
 
 Just like Marty McFly in Back to the Future, the model has little trouble predicting what the correct labels are, because it has already been trained on them!
 
