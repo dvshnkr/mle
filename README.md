@@ -26,11 +26,12 @@ Here, I follow along with DataTalksClub's [Machine Learning Zoomcamp](https://gi
 │   ├───2022-hw
 │   └───2023-hw
 └───src
+    ├───09-serverless
     ├───2022-hw
-    │   └───05-deployment
+    │   ├───05-deployment
+    │   └───09-serverless
     ├───linear-models
     │   ├───archive
-    │   ├───data
     │   └───res
     └───tests
 ```
